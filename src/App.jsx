@@ -19,12 +19,17 @@ const queryClient = new QueryClient({
 const App = () => {
   const adoptePets = useState(null);
   return (
-    <div className="m-0 p-0">
+    <div
+      className="m-0 w-full p-0"
+      style={{
+        background: "url(http://pets-images.dev-apis.com/pets/wallpaperA.jpg)",
+      }}
+    >
       <Router>
         <QueryClientProvider client={queryClient}>
           <AdoptePetContext.Provider value={adoptePets}>
-            <header>
-              <Link to={"/"}>
+            <header className="mb-10 w-full bg-gradient-to-b from-yellow-400 via-orange-500 to-red-500 p-7 text-center ">
+              <Link className="text-6xl text-white hover:text-gray-200" to={"/"}>
                 <h1>Adopte me!</h1>
               </Link>
             </header>
