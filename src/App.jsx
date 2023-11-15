@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
 const App = () => {
   const adoptePets = useState(null);
   return (
-    <div>
+    <div className="m-0 p-0">
       <Router>
         <QueryClientProvider client={queryClient}>
           <AdoptePetContext.Provider value={adoptePets}>

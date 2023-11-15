@@ -17,13 +17,17 @@
   "devDependencies": {
     "@tanstack/react-query-devtools": "^5.7.2",
     "@vitejs/plugin-react": "^4.1.1",
+    "autoprefixer": "^10.4.16",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.4.31",
     "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "tailwindcss": "^3.3.5",
     "vite": "^4.5.0"
   },
   "dependencies": {
