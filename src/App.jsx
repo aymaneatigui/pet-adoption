@@ -4,8 +4,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRoot } from "react-dom/client";
 import AdoptePetContext from "./AdoptePetContext.jsx";
-import SearchParams from "./SearchParams.jsx";
-import Details from "./Details.jsx";
+// import SearchParams from "./SearchParams.jsx";
+// import Details from "./Details.jsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
