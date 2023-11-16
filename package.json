@@ -12,8 +12,8 @@
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint  \"src/**/*.{js,jsx}\" --quiet",
-    "start": "echo \"Error: no test specified\" && exit 1",
-    "server": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --experimental-fetch server.js"
   },
   "keywords": [],
   "author": "",
