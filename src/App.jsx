@@ -1,12 +1,11 @@
-import { useState, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRoot } from "react-dom/client";
-import AdoptePetContext from "./AdoptePetContext.jsx";
 import SearchParams from "./SearchParams.jsx";
 import Details from "./Details.jsx";
-
+import { Provider } from "react-redux";
+import store from "./store.js";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -17,32 +16,23 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  const adoptePets = useState(null);
   return (
     <div>
       <Router>
-        <QueryClientProvider client={queryClient}>
-          <AdoptePetContext.Provider value={adoptePets}>
-            <Suspense
-              fallback={
-                <div className="loading-pane">
-                  <h1 className="loader">🌀</h1>
-                </div>
-              }
-            >
-              <header>
-                <Link to={"/"}>
-                  <h1>Adopte me!</h1>
-                </Link>
-              </header>
-              <Routes>
-                <Route path="/details/:id" element={<Details />} />
-                <Route path="/" element={<SearchParams />} />
-              </Routes>
-            </Suspense>
+        <Provider store={store}>
+          <QueryClientProvider client={queryClient}>
+            <header>
+              <Link to={"/"}>
+                <h1>Adopte me!</h1>
+              </Link>
+            </header>
+            <Routes>
+              <Route path='/details/:id' element={<Details />} />
+              <Route path='/' element={<SearchParams />} />
+            </Routes>
             <ReactQueryDevtools />
-          </AdoptePetContext.Provider>
-        </QueryClientProvider>
+          </QueryClientProvider>
+        </Provider>
       </Router>
     </div>
   );

@@ -1,35 +1,36 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import AdoptePetContext from "./AdoptePetContext.jsx";
 import fetchPet from "./Fetch/fetchPet";
 import Carousel from "./Carousel.jsx";
 import Modal from "./modal.jsx";
+import { useDispatch } from "react-redux";
+import { adopt } from "./adoptedPetSlice.js"
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false);
-  const [, setAdoptePet] = useContext(AdoptePetContext);
   const { id } = useParams();
   const navigate = useNavigate();
   const { data, status } = useQuery({
     queryKey: ["pets", id],
     queryFn: fetchPet,
   });
+  const dispatch = useDispatch();
 
   if (status == "pending") {
     return (
-      <div className="loading-pane">
-        <h2 className="loader">🌀</h2>
+      <div className='loading-pane'>
+        <h2 className='loader'>🌀</h2>
       </div>
     );
   }
 
   if (status == "error") {
-    return <div className="Error">THIS IS ERROR</div>;
+    return <div className='Error'>THIS IS ERROR</div>;
   }
 
   return (
-    <div className="details">
+    <div className='details'>
       {data.pets.map((pet, id) => {
         return (
           <div key={id}>
@@ -45,10 +46,10 @@ const Details = () => {
               <Modal>
                 <div>
                   <h1>Would you like to adapte {pet.name}?</h1>
-                  <div className="buttons">
+                  <div className='buttons'>
                     <button
                       onClick={() => {
-                        setAdoptePet(pet);
+                        dispatch(adopt(pet));
                         navigate("/");
                       }}
                     >
